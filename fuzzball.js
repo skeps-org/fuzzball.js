@@ -952,6 +952,7 @@
         }
         var m = new SequenceMatcher(null, shorter, longer);
         var blocks = m.getMatchingBlocks();
+        blocks = blocks.filter(function (block) { return (longer.length - block[1]  >= shorter.length) || (longer.length - block[1]  == 0); });
         var scores = [];
         for (var b = 0; b < blocks.length; b++) {
             var long_start = (blocks[b][1] - blocks[b][0]) > 0 ? (blocks[b][1] - blocks[b][0]) : 0;
